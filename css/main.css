@@ -97,7 +97,14 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+.vertical-center {
+    min-height: 85%;  /* Fallback for browsers do NOT support vh unit */
+    min-height: 85vh; /* These two lines are counted as one :-)       */
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 
 
