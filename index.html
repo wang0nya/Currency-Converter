@@ -32,27 +32,14 @@
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
     <![endif]-->
     <div class="vertical-center">
+      <form id="currencyForm">
       <div class="row">
         <div class="col-md-5 col-lg-5 col-sm-5 col-5">
           <div class="form-group has-success">
             <input type="number" class="form-control form-control-success text-center" placeholder="0">
           </div>
-          <div class="dropdown">
-            <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-              Dropdown
-              <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <li class="dropdown-header">Dropdown header</li>
-              <p class="dropdown-item" href="#pk">Action</p>
-              <p class="dropdown-item" href="#pk">Another action</p>
-              <p class="dropdown-item" href="#pk">Something else here</p>
-              <div class="dropdown-divider"></div>
-              <p class="dropdown-item" href="#pk">Separated link</p>
-              <div class="dropdown-divider"></div>
-              <p class="dropdown-item" href="#pk">Another separated link</p>
-            </ul>
-          </div>
+          <select id="currencyFromList" form="currencyForm">
+          </select>
         </div>
         <div class="icon icon-danger col-md-2 col-lg-2 col-sm-2 col-2" align="center">
           <button type="button" class="btn btn-info btn-just-icon"><i class="fa fa-arrows-h"></i></button>
@@ -61,8 +48,11 @@
           <div class="form-group has-success">
             <input type="number" class="form-control form-control-success text-center" placeholder="0">
           </div>
+          <select id="currencyToList" form="currencyForm">
+          </select>
         </div>
       </div>
+      </form>
     </div>
   </div>
   <footer class="footer section-dark">
