@@ -39,7 +39,7 @@ self.addEventListener('fetch', event => {
                 // and serve second one
                 let responseClone = response.clone();
 
-                caches.open('v1').then(cache => {
+                caches.open('v2').then(cache => {
                     cache.put(event.request, responseClone);
                 });
                 return response;
