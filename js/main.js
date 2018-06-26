@@ -22,16 +22,18 @@ getCurrencies.send();
 const convertCurrencies = new XMLHttpRequest();
 
 function convert() {
-    const from = document.getElementById("currencyFromList");
-    const fromValue = from.options[from.selectedIndex].text;
-    const to = document.getElementById("currencyToList");
-    const toValue = to.options[to.selectedIndex].text;
-    convertCurrencies.open('GET', `https://free.currencyconverterapi.com/api/v5/convert?q=${fromValue}_${toValue}&compact=y`, true);
+    let from = document.getElementById("currencyFromList");
+    from = from.options[from.selectedIndex].text;
+    let to = document.getElementById("currencyToList");
+    to = to.options[to.selectedIndex].text;
+    const query = from + '_' + to;
+    convertCurrencies.open('GET', `https://free.currencyconverterapi.com/api/v5/convert?q=${query}&compact=y`, true);
     convertCurrencies.onload = function () {
         // Begin accessing JSON data here
         let data = JSON.parse(this.response);
+        const rate = data[query];
         if (convertCurrencies.status >= 200 && convertCurrencies.status < 400) {
-            console.log(data);
+            console.log(rate.val);
 
         } else {
             console.log('error');
