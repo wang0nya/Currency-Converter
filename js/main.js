@@ -8,8 +8,8 @@ getCurrencies.onload = function () {
     let data = JSON.parse(this.response);
     if (getCurrencies.status >= 200 && getCurrencies.status < 400) {
         for (const currency in data.results) {
-            document.getElementById("currencyFromList").innerHTML += '<option value=`this.currency`>' + currency + '</option>';
-            document.getElementById("currencyToList").innerHTML += '<option value="PHP">' + currency + '</option>';
+            document.getElementById("currencyFromList").innerHTML += '<option>' + currency + '</option>';
+            document.getElementById("currencyToList").innerHTML += '<option>' + currency + '</option>';
         }
     } else {
         console.log('error');
