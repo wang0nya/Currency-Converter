@@ -1,7 +1,7 @@
 // add an install event listener to the service worker
 self.addEventListener('install', event => {
     event.waitUntil(
-        caches.open('v1').then(cache => cache.addAll([
+        caches.open('v2').then(cache => cache.addAll([
             '/Currency-Converter/',
             '/Currency-Converter/index.html',
             '/Currency-Converter/404.html',
@@ -47,4 +47,17 @@ self.addEventListener('fetch', event => {
                 new Response('Something went wrong :('));
         }
     }));
+});
+
+// activate
+self.addEventListener('activate', event => {
+    const cacheWhitelist = ['v2'];
+
+    event.waitUntil(
+        caches.keys().then(keyList => Promise.all(keyList.map(key => {
+            if (!cacheWhitelist.includes(key)) {
+                return caches.delete(key);
+            }
+        })))
+    );
 });
