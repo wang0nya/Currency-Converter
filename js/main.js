@@ -41,13 +41,13 @@ function convert() {
     to = to.options[to.selectedIndex].text;
     const amount = document.getElementById("amountFrom").value;
     const query = `${from}_${to}`;
-    convertCurrencies.open('GET', `https://free.currencyconverterapi.com/api/v5/convert?q=${query}&compact=y`, true);
+    convertCurrencies.open('GET', `https://free.currencyconverterapi.com/api/v5/convert?q=${query}&compact=ultra`, true);
     convertCurrencies.onload = function () {
         // Begin accessing JSON data here
         let data = JSON.parse(this.response);
         const rate = data[query];
         if (convertCurrencies.status >= 200 && convertCurrencies.status < 400) {
-            const result =  amount * rate.val;
+            const result =  amount * rate;
             document.getElementById("amountTo").value = result.toFixed(2);
         } else {
             console.log('error');
