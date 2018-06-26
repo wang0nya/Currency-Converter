@@ -26,6 +26,7 @@ function convert() {
     from = from.options[from.selectedIndex].text;
     let to = document.getElementById("currencyToList");
     to = to.options[to.selectedIndex].text;
+    const amount = document.getElementById("amountFrom").value;
     const query = from + '_' + to;
     convertCurrencies.open('GET', `https://free.currencyconverterapi.com/api/v5/convert?q=${query}&compact=y`, true);
     convertCurrencies.onload = function () {
@@ -33,8 +34,8 @@ function convert() {
         let data = JSON.parse(this.response);
         const rate = data[query];
         if (convertCurrencies.status >= 200 && convertCurrencies.status < 400) {
-            console.log(rate.val);
-
+            const result =  amount * rate.val;
+            document.getElementById("amountTo").value = result.toFixed(2);
         } else {
             console.log('error');
         }
