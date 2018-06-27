@@ -51,12 +51,7 @@ function convert() {
             .then(() => console.log('It worked!'))
             .catch(err => console.log('It failed!', err));
         // if data exists in idb, get from there
-        idbKeyval.get(query)
-            .then(rate => {
-                if (rate) {
-                    render(rate);
-                }
-            });
+        idbKeyval.get(query);
         if (convertCurrencies.status >= 200 && convertCurrencies.status < 400) {
             const result =  amount * rate;
             document.getElementById("amountTo").value = result.toFixed(2);
