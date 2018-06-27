@@ -1,7 +1,7 @@
 // add an install event listener to the service worker
 self.addEventListener('install', event => {
     event.waitUntil(
-        caches.open('v3').then(cache => cache.addAll([
+        caches.open('v4').then(cache => cache.addAll([
             '/Currency-Converter/',
             '/Currency-Converter/index.html',
             '/Currency-Converter/404.html',
@@ -20,7 +20,8 @@ self.addEventListener('install', event => {
             '/Currency-Converter/js/bootstrap.min.js',
             '/Currency-Converter/js/bootstrap-switch.min.js',
             '/Currency-Converter/js/paper-kit.js',
-            'https://free.currencyconverterapi.com/api/v5/currencies'
+            'https://free.currencyconverterapi.com/api/v5/currencies',
+            'https://cdn.jsdelivr.net/npm/idb-keyval@3/dist/idb-keyval-iife.min.js'
         ]))
     );
 });
@@ -40,7 +41,7 @@ self.addEventListener('fetch', event => {
                 // and serve second one
                 let responseClone = response.clone();
 
-                caches.open('v3').then(cache => {
+                caches.open('v4').then(cache => {
                     cache.put(event.request, responseClone);
                 });
                 return response;
@@ -52,7 +53,7 @@ self.addEventListener('fetch', event => {
 
 // activate
 self.addEventListener('activate', event => {
-    const cacheWhitelist = ['v3'];
+    const cacheWhitelist = ['v4'];
 
     event.waitUntil(
         caches.keys().then(keyList => Promise.all(keyList.map(key => {
