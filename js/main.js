@@ -1,10 +1,10 @@
 // register service worker
 if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function() {
-        navigator.serviceWorker.register('/Currency-Converter/sw.js').then(function(registration) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/Currency-Converter/sw.js').then(registration => {
             // Registration was successful
             console.log('ServiceWorker registration successful with scope: ', registration.scope);
-        }, function(err) {
+        }, err => {
             // registration failed :(
             console.log('ServiceWorker registration failed: ', err);
         });
@@ -46,6 +46,17 @@ function convert() {
         // Begin accessing JSON data here
         let data = JSON.parse(this.response);
         const rate = data[query];
+        // save data in idb
+        idbKeyval.set(query, rate)
+            .then(() => console.log('It worked!'))
+            .catch(err => console.log('It failed!', err));
+        // if data exists in idb, get from there
+        idbKeyval.get(query)
+            .then(rate => {
+                if (rate) {
+                    render(rate);
+                }
+            });
         if (convertCurrencies.status >= 200 && convertCurrencies.status < 400) {
             const result =  amount * rate;
             document.getElementById("amountTo").value = result.toFixed(2);
