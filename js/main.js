@@ -13,10 +13,8 @@ if ('serviceWorker' in navigator) {
 
 // get all currencies from API
 fetch('https://free.currencyconverterapi.com/api/v5/currencies')
-    .then(function(response) {
-        return response.json();
-    })
-    .then(function(currencies) {
+    .then(response => response.json())
+    .then(currencies => {
         for (const currency in currencies.results) {
             document.getElementById("currencyFromList").innerHTML += `<option>${currency}</option>`;
             document.getElementById("currencyToList").innerHTML += `<option>${currency}</option>`;
@@ -31,13 +29,31 @@ function convert() {
     to = to.options[to.selectedIndex].text;
     const amount = document.getElementById("amountFrom").value;
     const query = `${from}_${to}`;
-    fetch(`https://free.currencyconverterapi.com/api/v5/convert?q=${query}&compact=ultra`)
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (rate) {
-            const rateVal = rate[query];
-            const result =  amount * rateVal;
-            document.getElementById("amountTo").value = result.toFixed(2);
-        });
+
+    if (navigator.onLine) {
+        console.log('you are online');
+        console.log('currency rates will be fetched from network');
+        fetch(`https://free.currencyconverterapi.com/api/v5/convert?q=${query}&compact=ultra`)
+            .then(response => response.json())
+            .then(rate => {
+                let rateVal = rate[query];
+                let result =  amount * rateVal;
+                document.getElementById("amountTo").value = result.toFixed(2);
+                // save query to idb
+                idbKeyval.set(query, rateVal)
+                    .then(() => console.log('It worked!'))
+                    .catch(err => console.log('It failed!', err));
+            })
+    } else {
+        console.log('you are offline');
+        console.log('currency rates will be fetched from network');
+        // get from idb
+        idbKeyval.get(query)
+            .then(val => {
+                    console.log(`saved rate for ${query} = ${val}`);
+                    let result =  amount * val;
+                    document.getElementById("amountTo").value = result.toFixed(2);
+                }
+            );
+    }
 }
