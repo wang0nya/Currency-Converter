@@ -30,30 +30,35 @@ function convert() {
     const amount = document.getElementById("amountFrom").value;
     const query = `${from}_${to}`;
 
-    if (navigator.onLine) {
-        console.log('you are online');
-        console.log('currency rates will be fetched from network');
-        fetch(`https://free.currencyconverterapi.com/api/v5/convert?q=${query}&compact=ultra`)
-            .then(response => response.json())
-            .then(rate => {
-                let rateVal = rate[query];
-                let result =  amount * rateVal;
-                document.getElementById("amountTo").innerHTML = result.toFixed(2);
-                // save query to idb
-                idbKeyval.set(query, rateVal)
-                    .then(() => console.log('It worked!'))
-                    .catch(err => console.log('It failed!', err));
-            })
+    // check if form is valid before performing any operation
+    if (amount === "") {
+        alert('Please fill in the amount to convert');
     } else {
-        console.log('you are offline');
-        console.log('currency rates will be fetched from idb');
-        // get from idb
-        idbKeyval.get(query)
-            .then(val => {
-                    console.log(`saved rate for ${query} = ${val}`);
-                    let result =  amount * val;
+        if (navigator.onLine) {
+            console.log('you are online');
+            console.log('currency rates will be fetched from network');
+            fetch(`https://free.currencyconverterapi.com/api/v5/convert?q=${query}&compact=ultra`)
+                .then(response => response.json())
+                .then(rate => {
+                    let rateVal = rate[query];
+                    let result =  amount * rateVal;
                     document.getElementById("amountTo").innerHTML = result.toFixed(2);
-                }
-            );
+                    // save query to idb
+                    idbKeyval.set(query, rateVal)
+                        .then(() => console.log('It worked!'))
+                        .catch(err => console.log('It failed!', err));
+                })
+        } else {
+            console.log('you are offline');
+            console.log('currency rates will be fetched from idb');
+            // get from idb
+            idbKeyval.get(query)
+                .then(val => {
+                        console.log(`saved rate for ${query} = ${val}`);
+                        let result =  amount * val;
+                        document.getElementById("amountTo").innerHTML = result.toFixed(2);
+                    }
+                );
+        }
     }
 }
