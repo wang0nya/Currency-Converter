@@ -38,7 +38,7 @@ function convert() {
             .then(rate => {
                 let rateVal = rate[query];
                 let result =  amount * rateVal;
-                document.getElementById("amountTo").value = result.toFixed(2);
+                document.getElementById("amountTo").innerHTML = result.toFixed(2);
                 // save query to idb
                 idbKeyval.set(query, rateVal)
                     .then(() => console.log('It worked!'))
@@ -52,7 +52,7 @@ function convert() {
             .then(val => {
                     console.log(`saved rate for ${query} = ${val}`);
                     let result =  amount * val;
-                    document.getElementById("amountTo").value = result.toFixed(2);
+                    document.getElementById("amountTo").innerHTML = result.toFixed(2);
                 }
             );
     }
