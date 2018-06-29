@@ -1,9 +1,27 @@
 {
-    "icons": [{
-        "src": "icon.png",
-        "sizes": "192x192",
+    "icons": [
+    {
+        "src": "img/icon_64.png",
+        "sizes": "64x64",
         "type": "image/png"
-    }],
+    },
+    {
+        "src": "img/icon_128.png",
+        "sizes": "128x128",
+        "type": "image/png"
+     },
+     {
+        "src": "img/icon_256.png",
+        "sizes": "256x256",
+        "type": "image/png"
+     },
+     {
+        "src": "img/icon_512.png",
+        "sizes": "512x512",
+        "type": "image/png"
+     }
+
+    ],
     "start_url": "index.html",
     "name": "Simple Currency Converter",
     "short_name": "Simple CC",
