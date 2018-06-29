@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="5d6fd29d-8898-4ef1-97e7-c3a6822fefaa" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/main.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -38,8 +37,8 @@
       <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="618">
-              <caret line="55" selection-start-line="55" selection-end-line="55" />
+            <state relative-caret-position="543">
+              <caret line="48" column="67" selection-start-line="48" selection-start-column="67" selection-end-line="48" selection-end-column="67" />
             </state>
           </provider>
         </entry>
@@ -179,7 +178,7 @@
       <workItem from="1530076368891" duration="455000" />
       <workItem from="1530117690437" duration="8339000" />
       <workItem from="1530168584965" duration="4181000" />
-      <workItem from="1530206155067" duration="9486000" />
+      <workItem from="1530206155067" duration="9879000" />
     </task>
     <task id="LOCAL-00001" summary="fetch conversion rate">
       <created>1529999605190</created>
@@ -272,11 +271,18 @@
       <option name="project" value="LOCAL" />
       <updated>1530212223319</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="detect network status and act accordingly">
+      <created>1530220213587</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1530220213587</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="61390000" />
+    <option name="totallyTimeSpent" value="61783000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -322,7 +328,8 @@
     <MESSAGE value="minify idb-keyval.get" />
     <MESSAGE value="h5 on result" />
     <MESSAGE value="use fetch api instead of XMLHttpRequest" />
-    <option name="LAST_COMMIT_MESSAGE" value="use fetch api instead of XMLHttpRequest" />
+    <MESSAGE value="detect network status and act accordingly" />
+    <option name="LAST_COMMIT_MESSAGE" value="detect network status and act accordingly" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/index.html">
@@ -502,8 +509,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="618">
-          <caret line="55" selection-start-line="55" selection-end-line="55" />
+        <state relative-caret-position="543">
+          <caret line="48" column="67" selection-start-line="48" selection-start-column="67" selection-end-line="48" selection-end-column="67" />
         </state>
       </provider>
     </entry>

@@ -46,7 +46,7 @@ function convert() {
             })
     } else {
         console.log('you are offline');
-        console.log('currency rates will be fetched from network');
+        console.log('currency rates will be fetched from idb');
         // get from idb
         idbKeyval.get(query)
             .then(val => {
