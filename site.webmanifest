@@ -4,5 +4,11 @@
         "sizes": "192x192",
         "type": "image/png"
     }],
-    "start_url": "/"
+    "start_url": "index.html",
+    "name": "Simple Currency Converter",
+    "short_name": "Simple CC",
+    "display": "standalone",
+    "background_color": "#fff",
+    "theme_color": "#51cbce",
+    "description": "A simple currency converter."
 }
