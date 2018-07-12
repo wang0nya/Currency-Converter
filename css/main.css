@@ -11,10 +11,12 @@
    ========================================================================== */
 
 html {
-    color: #222;
+    /* color: #222; */
     font-size: 1em;
     line-height: 1.4;
 }
+
+body, footer {background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%) !important;}
 
 /*
  * Remove text-shadow in selection highlight:
